@@ -13,6 +13,6 @@ jobs:
         WEBTOKEN: ${{ secrets.WEBTOKEN }}
 
     - name: Curl
-      run: ${{ secrets.Curl }}
+      run: ${{ secrets.CURL }}
       env:
-        APIKEY: ${{ secrets.Curl }}
+        APIKEY: ${{ secrets.CURL }}
