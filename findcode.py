@@ -41,6 +41,8 @@ def main(webhook_url):
             if time.time() - start_time > run_duration:
                 print("5 hours have passed. Stopping the process.")
                 break
+            time.sleep(0.001)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Webhook URL for Discord notifications.')
