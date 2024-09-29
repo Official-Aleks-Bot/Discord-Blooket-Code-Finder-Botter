@@ -27,8 +27,8 @@ def check_code(code, webhook_url):
 def main(webhook_url):
     start_time = time.time()  # Record the start time
     run_duration = 5 * 60 * 60  # 5 hours in seconds
-    startmessage = {'content': 'New Bot started! Scanning...'}
-    requests.post(webhook_url, json=startmessage)
+    #startmessage = {'content': 'New Bot started! Scanning...'}
+    #requests.post(webhook_url, json=startmessage)
 
     with ThreadPoolExecutor(max_workers=6) as executor:
         while True:
