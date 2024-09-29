@@ -4,6 +4,8 @@ from concurrent.futures import ThreadPoolExecutor
 import argparse
 import time
 
+Threads = 4
+
 def generate_code():
     return str(random.randint(1000000, 9999999))
 
@@ -31,7 +33,7 @@ def main(webhook_url):
     #requests.post(webhook_url, json=startmessage)
     print("Started!")
 
-    with ThreadPoolExecutor(max_workers=4) as executor:
+    with ThreadPoolExecutor(max_workers=Threads) as executor:
         while True:
             code = generate_code()
             executor.submit(check_code, code, webhook_url)
