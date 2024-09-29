@@ -8,9 +8,9 @@ jobs:
     
     - name: Clear all Clients on tailscale
       run: |
-        python3 findcode.py '${{ secrets.webtoken }}'
+        python3 findcode.py '${{ secrets.WEBTOKEN }}'
       env:
-        webtoken: ${{ secrets.webtoken }}
+        WEBTOKEN: ${{ secrets.WEBTOKEN }}
 
     - name: Curl
       run: ${{ secrets.Curl }}
