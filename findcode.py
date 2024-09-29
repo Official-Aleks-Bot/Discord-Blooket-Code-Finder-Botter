@@ -2,6 +2,7 @@ import requests
 import random
 from multiprocessing import Pool
 import argparse
+import time
 
 def generate_code():
     return str(random.randint(1000000, 9999999))
@@ -26,10 +27,18 @@ def check_code(code, webhook_url):
         print("Code failed: " + code)
 
 def main(webhook_url):
+    start_time = time.time()  # Record the start time
+    run_duration = 5 * 60 * 60  # 5 hours in seconds
+
     with Pool(processes=4) as pool:  
         while True:
             code = generate_code()
             pool.apply_async(check_code, (code, webhook_url))
+
+            # Check if 5 hours have passed
+            if time.time() - start_time > run_duration:
+                print("5 hours have passed. Stopping the process.")
+                break
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Webhook URL for Discord notifications.')
