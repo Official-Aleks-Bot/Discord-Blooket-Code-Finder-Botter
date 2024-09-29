@@ -23,12 +23,14 @@ def check_code(code, webhook_url):
     if "true" in response.text:
         requests.post(webhook_url, json=message)
         print("Working code found: " + code)
+    else:
+        print("Failed: "+code)
 
 def main(webhook_url):
     start_time = time.time()  # Record the start time
     run_duration = 5 * 60 * 60  # 5 hours in seconds
 
-    with Pool(processes=4) as pool:  
+    with Pool(processes=6) as pool:  
         while True:
             code = generate_code()
             pool.apply_async(check_code, (code, webhook_url))
