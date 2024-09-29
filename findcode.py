@@ -1,6 +1,6 @@
 import requests
 import random
-from multiprocessing import Pool
+from concurrent.futures import ThreadPoolExecutor
 import argparse
 import time
 
@@ -24,16 +24,16 @@ def check_code(code, webhook_url):
         requests.post(webhook_url, json=message)
         print("Working code found: " + code)
     else:
-        print("Failed: "+code)
+        print("Failed: " + code)
 
 def main(webhook_url):
     start_time = time.time()  # Record the start time
     run_duration = 5 * 60 * 60  # 5 hours in seconds
 
-    with Pool(processes=6) as pool:  
+    with ThreadPoolExecutor(max_workers=6) as executor:
         while True:
             code = generate_code()
-            pool.apply_async(check_code, (code, webhook_url))
+            executor.submit(check_code, code, webhook_url)
 
             # Check if 5 hours have passed
             if time.time() - start_time > run_duration:
