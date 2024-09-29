@@ -1,0 +1,38 @@
+import requests
+import random
+from multiprocessing import Pool
+import argparse
+
+def generate_code():
+    return str(random.randint(1000000, 9999999))
+
+def check_code(code, webhook_url):
+    url = "https://fb.blooket.com/c/firebase/id?id=" + code
+
+    headers = {
+        "Host": "fb.blooket.com",
+        "Cookie": "_ga=GA1.1.652304743.1727505434; bsid=MTcyNzUwNTQzNXxMSEQ5Q1JkRlgzeDkxX0I2SGNJZDZEQ0t0WHBPMkJlcVlOQ3d3X0dpalNVM2NwR2FWUFZmbjRka0FMaz18RlST7EjNbxOqVQTBtlJf5RIAWrRpredKRzwCDEEHC70=; _ga_XPTRQH7XY5=GS1.1.1727505433.1.0.1727505435.0.0.0",
+    }
+
+    message = {
+        'content': 'Working code found: ' + code
+    }
+
+    response = requests.get(url, headers=headers)
+    if "true" in response.text:
+        requests.post(webhook_url, json=message)
+        print("Working code found: " + code)
+    else:
+        print("Code failed: " + code)
+
+def main(webhook_url):
+    with Pool(processes=4) as pool:  
+        while True:
+            code = generate_code()
+            pool.apply_async(check_code, (code, webhook_url))
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Webhook URL for Discord notifications.')
+    parser.add_argument('webhook_url', type=str, help='The Discord webhook URL')
+    args = parser.parse_args()
+    main(args.webhook_url)
