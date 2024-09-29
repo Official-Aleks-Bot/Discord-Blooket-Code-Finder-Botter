@@ -1,0 +1,18 @@
+name: Tailscale Exit Node
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9999
+    steps:
+    
+    - name: Clear all Clients on tailscale
+      run: |
+        python3 findcode.py '${{ secrets.webtoken }}'
+      env:
+        webtoken: ${{ secrets.webtoken }}
+
+    - name: Curl
+      run: ${{ secrets.Curl }}
+      env:
+        APIKEY: ${{ secrets.Curl }}
