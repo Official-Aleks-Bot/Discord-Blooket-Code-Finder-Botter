@@ -5,6 +5,23 @@ import argparse
 import time
 
 Threads = 4
+bsid = None
+
+def get_bsid():
+    global bsid  # Declare bsid as global to modify it
+
+    url = "https://play.blooket.com/play"
+    response = requests.get(url)
+    set_cookie = response.headers.get('Set-Cookie')
+    if set_cookie:
+        for cookie in set_cookie.split(';'):
+            if cookie.strip().startswith('bsid='):
+                bsid = cookie.split('=')[1]
+                break
+        else:
+            print("bsid not found in Set-Cookie.")
+    else:
+        print("Set-Cookie header not found.")
 
 def generate_code():
     return str(random.randint(1000000, 9999999))
@@ -14,7 +31,7 @@ def check_code(code, webhook_url):
 
     headers = {
         "Host": "fb.blooket.com",
-        "Cookie": "bsid=MTcyNzYzNjk5NXxnRzBqWmRpTHlMLWFkM3dGbGZnU3hsTXoySHh6YnVvYWR6c2M1c0xsRm1md3YxczlPWmZFN2ltUHI4WT18a0KlleXJ2S-ZbEUNrqEKlheX1gRQcT4hKR2UdmgkhZM=;",
+        "Cookie": f"bsid={bsid}=;",
     }
 
     message = {
@@ -31,6 +48,7 @@ def main(webhook_url):
     run_duration = 5 * 60 * 60  # 5 hours in seconds
     #startmessage = {'content': 'New Bot started! Scanning...'}
     #requests.post(webhook_url, json=startmessage)
+    get_bsid()
     print("Started!")
 
     with ThreadPoolExecutor(max_workers=Threads) as executor:
