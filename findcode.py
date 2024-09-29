@@ -23,8 +23,6 @@ def check_code(code, webhook_url):
     if "true" in response.text:
         requests.post(webhook_url, json=message)
         print("Working code found: " + code)
-    else:
-        print("Code failed: " + code)
 
 def main(webhook_url):
     start_time = time.time()  # Record the start time
