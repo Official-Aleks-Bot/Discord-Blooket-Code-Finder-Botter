@@ -14,7 +14,7 @@ def check_code(code, webhook_url):
 
     headers = {
         "Host": "fb.blooket.com",
-        "Cookie": "_ga=GA1.1.652304743.1727505434; bsid=MTcyNzUwNTQzNXxMSEQ5Q1JkRlgzeDkxX0I2SGNJZDZEQ0t0WHBPMkJlcVlOQ3d3X0dpalNVM2NwR2FWUFZmbjRka0FMaz18RlST7EjNbxOqVQTBtlJf5RIAWrRpredKRzwCDEEHC70=; _ga_XPTRQH7XY5=GS1.1.1727505433.1.0.1727505435.0.0.0",
+        "Cookie": "bsid=MTcyNzYzNjk5NXxnRzBqWmRpTHlMLWFkM3dGbGZnU3hsTXoySHh6YnVvYWR6c2M1c0xsRm1md3YxczlPWmZFN2ltUHI4WT18a0KlleXJ2S-ZbEUNrqEKlheX1gRQcT4hKR2UdmgkhZM=;",
     }
 
     message = {
