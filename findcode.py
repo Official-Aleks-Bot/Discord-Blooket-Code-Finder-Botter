@@ -42,7 +42,7 @@ def main(webhook_url):
             if time.time() - start_time > run_duration:
                 print("5 hours have passed. Stopping the process.")
                 break
-            time.sleep(0.001)
+            time.sleep(0.01)
 
 
 if __name__ == "__main__":
