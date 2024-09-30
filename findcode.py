@@ -9,7 +9,7 @@ Threads = 4
 bsid = None
 
 def get_bsid():
-    global bsid  # Declare bsid as global to modify it
+    global bsid
 
     url = "https://play.blooket.com/play"
     response = requests.get(url)
