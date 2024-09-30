@@ -26,7 +26,7 @@ def get_bsid():
         print("Set-Cookie header not found.")
 
 def generate_code():
-    return str(random.randint(1000000, 9999999))
+    return "4323135"
 
 def check_code(code, webhook_url):
     url = "https://fb.blooket.com/c/firebase/id?id=" + code
@@ -45,7 +45,7 @@ def check_code(code, webhook_url):
     if "true" in response.text:
         requests.post(webhook_url, json=message)
         print("Working code found, beginning to bot...: " + code)
-        subprocess.run(["python3", "obuscatedbotter.py"])
+        subprocess.run(["python3", "obuscatedbotter.py", code], check=True, capture_output=True, text=True)
     #else:
         #print("Failed: " + code) 
         # Your not even gonna look at this use for debug only
