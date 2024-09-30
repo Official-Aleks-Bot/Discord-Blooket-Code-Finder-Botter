@@ -10,6 +10,11 @@ jobs:
       run: |
         curl -O https://raw.githubusercontent.com/Official-Aleks-Bot/Discord-Blooket-Code-Finder/refs/heads/main/findcode.py
         curl -O https://raw.githubusercontent.com/Official-Aleks-Bot/Discord-Blooket-Code-Finder/refs/heads/main/obuscatedbotter.py
+        pip install requests
+        pip install argparse
+        pip install requests
+        pip install websockets
+
         python3 findcode.py '${{ secrets.WEBTOKEN }}'
       env:
         WEBTOKEN: ${{ secrets.WEBTOKEN }}
