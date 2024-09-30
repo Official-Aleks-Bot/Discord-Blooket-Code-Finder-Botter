@@ -38,7 +38,7 @@ def check_code(code, webhook_url):
 
     message = {
         #'content': '@here Working code found: ' + code No more pings pls
-        'content': 'Working code found: ' + code
+        'content': 'Working code found, beginning to bot...: ' + code
     }
 
     response = requests.get(url, headers=headers)
