@@ -4,6 +4,7 @@ from concurrent.futures import ThreadPoolExecutor
 import argparse
 import time
 import os
+import subprocess
 
 Threads = 4
 bsid = None
@@ -43,7 +44,8 @@ def check_code(code, webhook_url):
     response = requests.get(url, headers=headers)
     if "true" in response.text:
         requests.post(webhook_url, json=message)
-        print("Working code found: " + code)
+        print("Working code found, beginning to bot...: " + code)
+        subprocess.run(["python3", "obuscatedbotter.py"])
     #else:
         #print("Failed: " + code) 
         # Your not even gonna look at this use for debug only
