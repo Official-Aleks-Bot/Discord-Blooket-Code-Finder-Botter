@@ -3,12 +3,13 @@ import random
 from concurrent.futures import ThreadPoolExecutor
 import argparse
 import time
+import os
 
 Threads = 4
 bsid = None
 
 def get_bsid():
-    global bsid
+    global bsid  # Declare bsid as global to modify it
 
     url = "https://play.blooket.com/play"
     response = requests.get(url)
@@ -35,18 +36,20 @@ def check_code(code, webhook_url):
     }
 
     message = {
-        'content': 'Working code found: ' + code
-        #'content': '@here Working code found: ' + code
+        'content': '@here Working code found: ' + code
     }
 
     response = requests.get(url, headers=headers)
     if "true" in response.text:
         requests.post(webhook_url, json=message)
         print("Working code found: " + code)
+    #else:
+        #print("Failed: " + code) 
+        # Your not even gonna look at this use for debug only
 
 def main(webhook_url):
-    start_time = time.time()  # Record the start time
-    run_duration = 5 * 60 * 60  # 5 hours in seconds
+    start_time = time.time()  # sets the current time for later use
+    run_duration = 5 * 60 * 60  # 5 hours in seconds...
     #startmessage = {'content': 'New Bot started! Scanning...'}
     #requests.post(webhook_url, json=startmessage)
     get_bsid()
@@ -60,7 +63,8 @@ def main(webhook_url):
             # Check if 5 hours have passed
             if time.time() - start_time > run_duration:
                 print("5 hours have passed. Stopping the process.")
-                break
+                os._exit(0)  # Forcefully exit the program
+
             time.sleep(0.01)
 
 
