@@ -26,7 +26,8 @@ def get_bsid():
         print("Set-Cookie header not found.")
 
 def generate_code():
-    return "4323135"
+    return str(random.randint(1000000, 9999999))
+    #return "4323135" Set code here for testing
 
 def check_code(code, webhook_url):
     url = "https://fb.blooket.com/c/firebase/id?id=" + code
