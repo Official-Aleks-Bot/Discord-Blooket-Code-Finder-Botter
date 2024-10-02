@@ -6,7 +6,7 @@ import time
 import os
 import subprocess
 
-Threads = 40
+Threads = 30
 bsid = None
 
 def get_bsid():
