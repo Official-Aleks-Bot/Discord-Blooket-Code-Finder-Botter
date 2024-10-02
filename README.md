@@ -14,6 +14,8 @@ The botter is obuscated to prevent antibots from being implemented. However it m
 
 No, There is no real way to protect yourself from this attack.
 
+only luck
+
 # Why?
 
 Because its funny, and I can :)
