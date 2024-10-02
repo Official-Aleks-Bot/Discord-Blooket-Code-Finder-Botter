@@ -8,11 +8,11 @@ Should automaticly raid blooket games now, codes are still posted to the discord
 
 The botter is obuscated to prevent antibots from being implemented. However it may still be used by the skids in such manner: python3 script.py code_here
 
-# Blookets attemps to patch it:
+# Blookets attemps to patch it our project:
 
 1. Blooket patched coustom images after a day of running! (October 01, 2024)
 
-2. Blooket removed invalid charicatars and blocks more frequent bsid timeout. (October 02, 2024)
+2. Blooket removed invalid characters and more frequent bsid timeouts. (October 02, 2024)
    
 # Can I protect myself?
 
