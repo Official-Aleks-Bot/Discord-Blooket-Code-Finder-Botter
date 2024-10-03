@@ -18,7 +18,7 @@ def get_bsid():
     "Sec-Ch-Ua-Platform": '"Windows"',
     "Accept-Language": "en-US,en;q=0.9",
     "Upgrade-Insecure-Requests": "1",
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.6613.120 Safari/537.36",
+    "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 14541.0.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
     "Sec-Fetch-Site": "none",
     "Sec-Fetch-Mode": "navigate",
@@ -48,7 +48,7 @@ def check_code(code, webhook_url):
     get_bsid()
     headers = {
         "Host": "fb.blooket.com",
-        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        'User-Agent': "Mozilla/5.0 (X11; CrOS x86_64 14541.0.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36", # Chrome OS is the best is it not? (jk, who acctually likes this)
         'Referer': 'https://fb.blooket.com',
         "Cookie": f"bsid={bsid}",
     }
