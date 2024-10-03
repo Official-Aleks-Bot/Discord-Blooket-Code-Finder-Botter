@@ -15,7 +15,7 @@ def get_bsid():
     "Host": "play.blooket.com",
     "Sec-Ch-Ua": '"Not;A=Brand";v="24", "Chromium";v="128"',
     "Sec-Ch-Ua-Mobile": "?0",
-    "Sec-Ch-Ua-Platform": '"Windows"',
+    "Sec-Ch-Ua-Platform": '"ChromeOS"',
     "Accept-Language": "en-US,en;q=0.9",
     "Upgrade-Insecure-Requests": "1",
     "User-Agent": "Mozilla/5.0 (X11; CrOS x86_64 14541.0.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
